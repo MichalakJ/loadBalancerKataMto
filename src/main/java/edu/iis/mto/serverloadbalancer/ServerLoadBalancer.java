@@ -12,7 +12,7 @@ public class ServerLoadBalancer {
 
     }
 
-    public void balance(Server theServer, Vm[] vms) {
+    public void balance(Server[] theServer, Vm[] vms) {
         if(vms == null || theServer ==null){
             return;
         }
