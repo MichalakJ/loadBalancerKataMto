@@ -1,23 +1,25 @@
 package edu.iis.mto.serverloadbalancer;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * Created by Kuba on 2016-06-12.
  */
 public class Server {
     private int capacity;
-    private double loadPercetage;
+    private double loadPercentage;
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public double getLoadPercetage() {
-        return loadPercetage;
+    public double getLoadPercentage() {
+        return loadPercentage;
     }
 
     public boolean contains(Vm theVm) {
-        throw new NotImplementedException();
+        return true;
+    }
+
+    public void setLoadPercentage(double loadPercentage) {
+        this.loadPercentage = loadPercentage;
     }
 }

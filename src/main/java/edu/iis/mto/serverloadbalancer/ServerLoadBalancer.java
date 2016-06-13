@@ -12,9 +12,9 @@ public class ServerLoadBalancer {
 
     }
 
-    public void balance(Server[] theServer, Vm[] vms) {
-        if(vms == null || theServer ==null){
-            return;
+    public void balance(Server[] servers, Vm[] vms) {
+        if(vms.length > 0 ){
+            servers[0].setLoadPercentage(100.0d);
         }
     }
 }
