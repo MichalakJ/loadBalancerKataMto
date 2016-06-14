@@ -4,6 +4,7 @@ package edu.iis.mto.serverloadbalancer;
  * Created by Kuba on 2016-06-12.
  */
 public class Server {
+    public static final double MAXIMUM_LOAD = 100.0d;
     private int capacity;
     private double loadPercentage;
 
@@ -25,5 +26,9 @@ public class Server {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public void addVm(Vm vm) {
+        loadPercentage = (double) vm.getSize() / (double) capacity * MAXIMUM_LOAD;
     }
 }

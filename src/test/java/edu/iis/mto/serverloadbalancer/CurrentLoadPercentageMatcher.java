@@ -8,6 +8,7 @@ import org.hamcrest.TypeSafeMatcher;
  * Created by Kuba on 2016-06-12.
  */
 public class CurrentLoadPercentageMatcher extends TypeSafeMatcher<Server> {
+    public static final double EPSILON = 0.01d;
     private double v;
 
     public CurrentLoadPercentageMatcher(double v) {
@@ -24,7 +25,7 @@ public class CurrentLoadPercentageMatcher extends TypeSafeMatcher<Server> {
     }
 
     private boolean isDoubleEqual(Server server) {
-        return v == server.getLoadPercentage() || Math.abs(v-server.getLoadPercentage()) < 0.01d;
+        return v == server.getLoadPercentage() || Math.abs(v-server.getLoadPercentage()) < EPSILON;
     }
 
 
