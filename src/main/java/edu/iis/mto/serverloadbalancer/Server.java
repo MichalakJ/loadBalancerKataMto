@@ -22,7 +22,7 @@ public class Server {
     }
 
     public boolean contains(Vm theVm) {
-        return true;
+        return vmsList.contains(theVm);
     }
 
     public void setLoadPercentage(double loadPercentage) {
@@ -34,6 +34,7 @@ public class Server {
     }
 
     public void addVm(Vm vm) {
+
         loadPercentage = (double) vm.getSize() / (double) capacity * MAXIMUM_LOAD;
         vmsList.add(vm);
     }
