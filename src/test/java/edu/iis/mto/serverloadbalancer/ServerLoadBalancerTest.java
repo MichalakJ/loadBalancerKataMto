@@ -38,7 +38,7 @@ public class ServerLoadBalancerTest {
 
     @Test
     public void balancingOneServerWithTenSlotsCapacity_andOneSlotVm_fillTheServerWithTenPercent(){
-        Server theServer = a(server().withCapacity(1));
+        Server theServer = a(server().withCapacity(10));
         Vm theVm = a(vm().withSize(1));
         ServerLoadBalancer balancer = new ServerLoadBalancer();
         balancer.balance(listWithServer(theServer), listWithVm(theVm));

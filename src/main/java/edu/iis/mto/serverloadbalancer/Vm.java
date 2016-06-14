@@ -9,4 +9,8 @@ public class Vm {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public int getSize() {
+        return size;
+    }
 }

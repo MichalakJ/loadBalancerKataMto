@@ -22,4 +22,8 @@ public class Server {
     public void setLoadPercentage(double loadPercentage) {
         this.loadPercentage = loadPercentage;
     }
+
+    public int getCapacity() {
+        return capacity;
+    }
 }
