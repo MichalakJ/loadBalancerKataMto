@@ -34,8 +34,7 @@ public class Server {
     }
 
     public void addVm(Vm vm) {
-
-        loadPercentage = getLoadOfVm(vm);
+        loadPercentage += getLoadOfVm(vm);
         vmsList.add(vm);
     }
 

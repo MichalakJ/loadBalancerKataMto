@@ -103,11 +103,11 @@ public class ServerLoadBalancerTest {
         balancer.balance(listWithServer(server1, server2), listWithVm(vm1, vm2, vm3));
 
         assertThat("server1 should contain vm1", server1.contains(vm1));
-        assertThat("server2 should contain vm2", server1.contains(vm2));
+        assertThat("server2 should contain vm2", server2.contains(vm2));
         assertThat("server1 should contain vm3", server1.contains(vm1));
 
         assertThat(server1, hasLoadPercentageOf(75.0d));
-        assertThat(server2, hasLoadPercentageOf(66.0d));
+        assertThat(server2, hasLoadPercentageOf(66.66d));
     }
 
     private Vm a(VmBuilder vmBuilder) {
