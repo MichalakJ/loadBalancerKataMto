@@ -1,6 +1,7 @@
 package edu.iis.mto.serverloadbalancer;
 
 
+import static edu.iis.mto.serverloadbalancer.CurrentLoadPercentageMatcher.hasLoadPercentageOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -19,7 +20,7 @@ public class ServerLoadBalancerTest {
         ServerLoadBalancer balancer = new ServerLoadBalancer();
         balancer.balance(listWithServer(theServer), emptyVmList());
 
-        assertThat(theServer, CurrentLoadPercentageMatcher.hasLoadPercentageOf(0.0d));
+        assertThat(theServer, hasLoadPercentageOf(0.0d));
     }
 
 
@@ -31,7 +32,7 @@ public class ServerLoadBalancerTest {
         ServerLoadBalancer balancer = new ServerLoadBalancer();
         balancer.balance(listWithServer(theServer), listWithVm(theVm));
 
-        assertThat(theServer, CurrentLoadPercentageMatcher.hasLoadPercentageOf(100.0d));
+        assertThat(theServer, hasLoadPercentageOf(100.0d));
         assertThat("server should contain vm", theServer.contains(theVm));
 
     }
@@ -44,7 +45,7 @@ public class ServerLoadBalancerTest {
         balancer.balance(listWithServer(theServer), listWithVm(theVm));
 
 
-        assertThat(theServer, CurrentLoadPercentageMatcher.hasLoadPercentageOf(10.0d));
+        assertThat(theServer, hasLoadPercentageOf(10.0d));
         assertThat("server should contain vm", theServer.contains(theVm));
 
     }
@@ -87,6 +88,26 @@ public class ServerLoadBalancerTest {
         balancer.balance(listWithServer(theServer), listWithVm(theVm));
 
         assertThat("server should not contain vm", !theServer.contains(theVm));
+    }
+
+    @Test
+    public void balance_serversAndVms(){
+        Server server1 = a(server().withCapacity(4));
+        Server server2 = a(server().withCapacity(6));
+
+        Vm vm1 = a(vm().withSize(1));
+        Vm vm2 = a(vm().withSize(4));
+        Vm vm3 = a(vm().withSize(2));
+
+        ServerLoadBalancer balancer = new ServerLoadBalancer();
+        balancer.balance(listWithServer(server1, server2), listWithVm(vm1, vm2, vm3));
+
+        assertThat("server1 should contain vm1", server1.contains(vm1));
+        assertThat("server2 should contain vm2", server1.contains(vm2));
+        assertThat("server1 should contain vm3", server1.contains(vm1));
+
+        assertThat(server1, hasLoadPercentageOf(75.0d));
+        assertThat(server2, hasLoadPercentageOf(66.0d));
     }
 
     private Vm a(VmBuilder vmBuilder) {
