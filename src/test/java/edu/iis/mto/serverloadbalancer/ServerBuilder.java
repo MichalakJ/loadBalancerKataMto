@@ -23,4 +23,9 @@ public class ServerBuilder implements Builder<Server>{
     public Server build() {
         return server;
     }
+
+    public ServerBuilder withLoadPercentage(int loadPercentage) {
+        server.setLoadPercentage(loadPercentage);
+        return this;
+    }
 }
