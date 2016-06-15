@@ -21,6 +21,6 @@ public class Server {
     }
 
     public boolean contains(Vm vm) {
-        return false;
+        return vmList.contains(vm);
     }
 }
