@@ -23,6 +23,6 @@ public class Server {
     }
 
     public boolean contains(Vm vm1) {
-        return true;
+        return vmList.contains(vm1);
     }
 }

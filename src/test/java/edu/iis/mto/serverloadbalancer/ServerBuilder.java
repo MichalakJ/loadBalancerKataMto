@@ -7,6 +7,7 @@ public class ServerBuilder implements Builder<Server>{
 
     private final Server server;
     private int capacity;
+    private int initialLoad;
 
     public ServerBuilder() {
         server = new Server();
@@ -19,6 +20,16 @@ public class ServerBuilder implements Builder<Server>{
 
     public Server build() {
         server.capacity = capacity;
+        if(initialLoad > 0) {
+            int vmSize = (int) (initialLoad / (double) capacity * 100.0d);
+            Vm vm = new VmBuilder().withSize(vmSize).build();
+            server.addVm(vm);
+        }
         return server;
+    }
+
+    public ServerBuilder withInitialLoadOf(int initialLoad) {
+        this.initialLoad = initialLoad;
+        return this;
     }
 }
