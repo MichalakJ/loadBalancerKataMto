@@ -19,4 +19,8 @@ public class Server {
     public int countVms() {
         return vmList.size();
     }
+
+    public boolean contains(Vm vm) {
+        return false;
+    }
 }
