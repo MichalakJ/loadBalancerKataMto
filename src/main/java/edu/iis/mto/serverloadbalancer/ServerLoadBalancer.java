@@ -5,5 +5,9 @@ package edu.iis.mto.serverloadbalancer;
  */
 public class ServerLoadBalancer {
     public void balance(Server[] serverList, Vm[] emptyVmList) {
+        if(emptyVmList.length > 0){
+            serverList[0].loadPercentage = 100.0d;
+        }
+
     }
 }
