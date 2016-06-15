@@ -40,6 +40,19 @@ public class ServerLoadBalancerTest {
 
     }
 
+    @Test
+    public void balancingAServerWithEnoughRoom_getsFilledWithAllVms(){
+        Server server = a(server().withCapacity(10));
+        Vm vm1 = a(vm().withSize(1));
+        Vm vm2 = a(vm().withSize(5));
+        balance(serverListWith(server), vmListWith(vm1,vm2));
+        assertThat(server, hasVmCountOf(2));
+    }
+
+    private Matcher<? super Server> hasVmCountOf(int expectedVmsCount) {
+        return new VmCountMatcher(expectedVmsCount);
+    }
+
     private Vm a(VmBuilder vmBuilder) {
         return vmBuilder.build();
     }
