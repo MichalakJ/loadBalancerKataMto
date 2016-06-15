@@ -72,6 +72,8 @@ public class ServerLoadBalancerTest {
 
     }
 
+
+
     private Vm[] vmListWith(Vm... vms) {
         return vms;
     }
