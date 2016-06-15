@@ -20,11 +20,15 @@ public class ServerBuilder implements Builder<Server>{
     public Server build() {
         server.capacity = capacity;
         if(load>0) {
-            int initialVmSize = (int) (load * (double) capacity / 100.0d);
-            Vm initialVm = new VmBuilder().withSize(initialVmSize).build();
-            server.addVm(initialVm);
+            addInitialLoad();
         }
         return server;
+    }
+
+    private void addInitialLoad() {
+        int initialVmSize = (int) (load * (double) capacity / Server.MAXIMUM_LOAD);
+        Vm initialVm = new VmBuilder().withSize(initialVmSize).build();
+        server.addVm(initialVm);
     }
 
     public ServerBuilder withLoadOf(double load) {

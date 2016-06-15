@@ -6,17 +6,22 @@ package edu.iis.mto.serverloadbalancer;
 public class ServerLoadBalancer {
     public void balance(Server[] serverList, Vm[] vmList) {
         for (Vm vm : vmList) {
-            Server lessLoadedServer = null;
-            for (Server server : serverList) {
-                if(lessLoadedServer == null || lessLoadedServer.loadPercentage > server.loadPercentage){
-                    lessLoadedServer = server;
-                }
-            }
+            Server lessLoadedServer = findLeastLoadedServer(serverList);
             lessLoadedServer.addVm(vm);
         }
 
 
 
 
+    }
+
+    private Server findLeastLoadedServer(Server[] serverList) {
+        Server lessLoadedServer = null;
+        for (Server server : serverList) {
+            if(lessLoadedServer == null || lessLoadedServer.loadPercentage > server.loadPercentage){
+                lessLoadedServer = server;
+            }
+        }
+        return lessLoadedServer;
     }
 }
