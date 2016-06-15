@@ -85,7 +85,7 @@ public class ServerLoadBalancerTest {
         assertThat("server2 contains vm2 ", server2.contains(vm2));
         assertThat("server1 contains vm3 ", server1.contains(vm1));
 
-        assertThat(server1, hasLoadPercentageOf(33.33d));
+        assertThat(server1, hasLoadPercentageOf(30.0d));
         assertThat(server2, hasLoadPercentageOf(50.0d));
     }
 

@@ -13,7 +13,7 @@ public class Server {
     private List<Vm> vmList = new ArrayList<Vm>();
     public void addVm(Vm vm) {
         vmList.add(vm);
-        loadPercentage = getVmLoad(vm);
+        loadPercentage += getVmLoad(vm);
     }
 
     public int countVms() {
