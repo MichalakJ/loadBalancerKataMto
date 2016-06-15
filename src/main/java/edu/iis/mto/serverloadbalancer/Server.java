@@ -15,7 +15,7 @@ public class Server {
 
     public void addVm(Vm vm) {
         vmList.add(vm);
-        currentLoadPercentage = loadOfVm(vm);
+        currentLoadPercentage += loadOfVm(vm);
     }
 
     public int countVms() {
