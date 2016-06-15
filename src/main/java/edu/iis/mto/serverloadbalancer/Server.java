@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class Server {
     public static final double MAXIMUM_LOAD = 100.0d;
-    public double currentLoadPercentage;
-    public int capacity;
+    private double currentLoadPercentage;
+    private int capacity;
 
     List<Vm> vmList = new ArrayList<Vm>();
 
@@ -31,6 +31,14 @@ public class Server {
     }
 
     private double loadOfVm(Vm vm) {
-        return (double) vm.size * MAXIMUM_LOAD / (double) capacity;
+        return (double) vm.getSize() * MAXIMUM_LOAD / (double) capacity;
+    }
+
+    public double getCurrentLoadPercentage() {
+        return currentLoadPercentage;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
