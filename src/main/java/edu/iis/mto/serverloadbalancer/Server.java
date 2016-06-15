@@ -11,4 +11,12 @@ public class Server {
     public void addVm(Vm vm) {
         currentLoadPercentage =  (double) vm.size * MAXIMUM_LOAD / (double) capacity;
     }
+
+    public int countVms() {
+        return 0;
+    }
+
+    public boolean contains(Vm vm1) {
+        return true;
+    }
 }
