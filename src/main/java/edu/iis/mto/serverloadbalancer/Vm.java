@@ -4,5 +4,13 @@ package edu.iis.mto.serverloadbalancer;
  * Created by Kuba on 2016-06-15.
  */
 public class Vm {
-    public int size;
+    private int size;
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 }
