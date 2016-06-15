@@ -29,7 +29,7 @@ public class ServerBuilder implements Builder<Server>{
     }
 
     private void addInitialLoad() {
-        int vmSize = (int) (initialLoad / (double) capacity * MAXIMUM_LOAD);
+        int vmSize = (int) ((double) initialLoad * (double) capacity / MAXIMUM_LOAD);
         Vm vm = new VmBuilder().withSize(vmSize).build();
         server.addVm(vm);
     }

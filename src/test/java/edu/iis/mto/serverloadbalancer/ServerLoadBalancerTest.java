@@ -80,7 +80,7 @@ public class ServerLoadBalancerTest {
 
         balance(serverListWith(server1), vmListWith(vm));
 
-        assertThat("server contains vm1 ", !server1.contains(vm));
+        assertThat("server does not containc vm1 ", !server1.contains(vm));
     }
 
     private Vm[] vmListWith(Vm... vms) {
