@@ -17,7 +17,7 @@ public class VmBuilder implements Builder<Vm>{
     }
 
     public Vm build() {
-        vm.size = size;
+        vm.setSize(size);
         return vm;
     }
 }

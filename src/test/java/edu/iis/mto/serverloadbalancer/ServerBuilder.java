@@ -18,7 +18,7 @@ public class ServerBuilder implements Builder<Server>{
     }
 
     public Server build() {
-        server.capacity = capacity;
+        server.setCapacity(capacity);
         if(loadPercentage > 0){
             addInitialLoad();
         }
