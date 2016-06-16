@@ -25,4 +25,8 @@ public class Server {
     public boolean contains(Vm vm) {
         return vmList.contains(vm);
     }
+
+    public boolean canFit(Vm vm) {
+        return (double) vm.size * MAXIMUM_LOAD / (double) capacity <= MAXIMUM_LOAD - currentLoadPercentage;
+    }
 }
