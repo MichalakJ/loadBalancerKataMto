@@ -46,14 +46,10 @@ public class ServerLoadBalancerTest {
         Vm vm2 = a(vm().withSize(3));
         balance(serverListWith(server), vmListWith(vm1,vm2));
 
-        assertThat(server, hasVmCountOf(2));
+        assertThat(server, VmCountMatcher.hasVmCountOf(2));
         assertThat("server contains vm1", server.contains(vm1));
         assertThat("server contains vm2", server.contains(vm2));
 
-    }
-
-    private Matcher<? super Server> hasVmCountOf(int expectedVmCount) {
-        return new VmCountMatcher(expectedVmCount);
     }
 
     private Vm a(VmBuilder vmBuilder) {
