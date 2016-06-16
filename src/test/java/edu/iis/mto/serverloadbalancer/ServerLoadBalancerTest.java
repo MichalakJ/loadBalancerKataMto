@@ -65,6 +65,8 @@ public class ServerLoadBalancerTest {
         assertThat("more loaded server does not contain vm", !moreLoadedserver.contains(vm));
     }
 
+
+
     private Vm a(VmBuilder vmBuilder) {
         return vmBuilder.build();
     }

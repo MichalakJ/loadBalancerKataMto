@@ -20,12 +20,16 @@ public class ServerBuilder implements Builder<Server>{
     public Server build() {
         server.capacity = capacity;
         if(loadPercentage > 0){
-            int initialSize = (int) ((double) loadPercentage * (double) capacity / 100.0d);
-            Vm initialVm = new VmBuilder().withSize(initialSize).build();
-            server.addVm(initialVm);
+            addInitialLoad();
         }
 
         return server;
+    }
+
+    private void addInitialLoad() {
+        int initialSize = (int) ((double) loadPercentage * (double) capacity / Server.MAXIMUM_LOAD);
+        Vm initialVm = new VmBuilder().withSize(initialSize).build();
+        server.addVm(initialVm);
     }
 
     public ServerBuilder withLoadPercentage(int loadPercentage) {
